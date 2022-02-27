@@ -1,7 +1,7 @@
 #include <signal.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include <string.h>
+#include <unistd.h>
 
 int main(int ac, char **av)
 {
@@ -12,7 +12,7 @@ int main(int ac, char **av)
 	if (ac != 3)
 		return (0);
 	j = 0;
-	while (j < strlen(av[2]))
+	while (av[2][j])
 	{
 		z = 128;
 		i = 1;
@@ -30,6 +30,7 @@ int main(int ac, char **av)
 			}
 			z = z >> 1;
 			i++;
+			usleep(3);
 		}
 		j++;
 	}
