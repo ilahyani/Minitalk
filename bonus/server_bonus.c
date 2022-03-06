@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   server_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ilahyani <ilahyani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/27 19:15:41 by ilahyani          #+#    #+#             */
-/*   Updated: 2022/03/05 18:48:20 by ilahyani         ###   ########.fr       */
+/*   Created: 2022/03/06 13:16:47 by ilahyani          #+#    #+#             */
+/*   Updated: 2022/03/06 13:16:48 by ilahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	handler(int signum, siginfo_t *info, void *context)
 		if (byte == 0)
 			kill(info->si_pid, SIGUSR1);
 		else
-			ft_printf("%d", byte);
+			ft_printf("%c", byte);
 		og_pid = 0;
 		byte = 0;
 		j = 7;

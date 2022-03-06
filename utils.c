@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ilahyani <ilahyani@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/06 13:16:12 by ilahyani          #+#    #+#             */
+/*   Updated: 2022/03/06 15:32:38 by ilahyani         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minitalk.h"
 
 int	ft_power(int nb, int power)
@@ -12,7 +24,7 @@ int	ft_power(int nb, int power)
 		return (nb * ft_power(nb, power - 1));
 }
 
-size_t ft_strlen(char *s)
+size_t	ft_strlen(char *s)
 {
     size_t  i;
 
@@ -66,7 +78,5 @@ int ft_atoi(const char *str)
 		return (-1);
 	while (str[i] >= '0' && str[i] <= '9')
 		res = res * 10 + (str[i++] - 48);
-	// if (str[i] && !ft_isdigit((int) str[i]))
-	// 	return (-1);
 	return (res * sign);
 }
