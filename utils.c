@@ -6,7 +6,7 @@
 /*   By: ilahyani <ilahyani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 13:16:12 by ilahyani          #+#    #+#             */
-/*   Updated: 2022/03/06 15:32:38 by ilahyani         ###   ########.fr       */
+/*   Updated: 2022/03/06 15:44:44 by ilahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ int	ft_power(int nb, int power)
 
 size_t	ft_strlen(char *s)
 {
-    size_t  i;
+	size_t	i;
 
-    i = 0;
-    while (s[i])
-        i++;
-    return(i);
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
 }
 
 int	ft_is_numeric(const char *str)
@@ -58,11 +58,11 @@ int	ft_is_space(char c)
 	return (0);
 }
 
-int ft_atoi(const char *str)
+int	ft_atoi(const char *str)
 {
-	int i;
-	int res;
-	int sign;
+	int	i;
+	int	res;
+	int	sign;
 
 	res = 0;
 	sign = 1;
