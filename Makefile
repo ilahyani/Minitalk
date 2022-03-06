@@ -1,22 +1,30 @@
-SRCS_svr =	server.c\
-				utils.c
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: ilahyani <ilahyani@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/03/06 17:37:07 by ilahyani          #+#    #+#              #
+#    Updated: 2022/03/06 18:30:11 by ilahyani         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-SRCS_clt =	client.c\
-				utils.c
+SRCS = ./utils.c
 
-BNS_svr =	bonus/server_bonus.c\
-				bonus/utils_bonus.c
+OBJS = $(SRCS:.c=.o)
 
-BNS_clt =	bonus/client_bonus.c\
-				bonus/utils_bonus.c
+BNS_SRCS = bonus/utils_bonus.c
 
-OBJS_srv = $(SRCS_svr:.c=.o)
+BNS_OBJS = $(BNS_SRCS:.c=.o)
 
-OBJS_clt = $(SRCS_clt:.c=.o)
+NAME1 = server
 
-BNS_OBJS_srv = $(BNS_svr:.c=.o)
+NAME2 = client
 
-BNS_OBJS_clt = $(BNS_clt:.c=.o)
+BNS_NAME1 = server_bonus
+
+BNS_NAME2 = client_bonus
 
 CC = gcc
 
@@ -26,23 +34,36 @@ RM = rm -rf
 
 PRNTF = ./ft_printf
 
-LBFT_PRNTF = ./ft_printf/libftprintf.a	
+HDR = ./minitalk.h
 
-all:	$(OBJS_clt) $(OBJS_srv) $(LBFT_PRNTF)
-			$(CC) $(CFLAGS) $(OBJS_clt) $(LBFT_PRNTF) -o client
-			$(CC) $(CFLAGS) $(OBJS_srv) $(LBFT_PRNTF) -o server
+BNS_HDR = ./bonus/minitalk_bonus.h
 
-bonus:	$(BNS_OBJS_srv) $(BNS_OBJS_clt) $(LBFT_PRNTF)
-			$(CC) $(CFLAGS) $(BNS_OBJS_srv) $(LBFT_PRNTF) -o bonus_server
-			$(CC) $(CFLAGS) $(BNS_OBJS_clt) $(LBFT_PRNTF) -o bonus_client
+LBFT_PRNTF = ./ft_printf/libftprintf.a
+
+all:	$(NAME1) $(NAME2)
+
+$(NAME1): $(OBJS) $(LBFT_PRNTF)
+			$(CC) $(CFLAGS) server.c $(OBJS) $(LBFT_PRNTF)  -o $(NAME1)
+$(NAME2): $(OBJS) $(LBFT_PRNTF)
+			$(CC) $(CFLAGS) client.c $(OBJS) $(LBFT_PRNTF)  -o $(NAME2)
+
+bonus:	$(BNS_NAME1) $(BNS_NAME2)
+
+$(BNS_NAME1): $(BNS_OBJS) $(LBFT_PRNTF)
+				$(CC) $(CFLAGS) bonus/server_bonus.c $(BNS_OBJS) $(LBFT_PRNTF) -o $(BNS_NAME1)
+$(BNS_NAME2): $(BNS_OBJS) $(LBFT_PRNTF)
+				$(CC) $(CFLAGS) bonus/client_bonus.c $(BNS_OBJS) $(LBFT_PRNTF) -o $(BNS_NAME2)
 
 $(LBFT_PRNTF):
 				Make -C $(PRNTF)
 
+%.o: %.c $(HDR) $(BNS_HDR)
+			$(CC) $(CFLAGS) -c $< -o $@
+
 clean:	
-		$(RM) $(OBJS_srv) $(OBJS_clt) $(BNS_OBJS_srv) $(BNS_OBJS_clt) $(PRNTF)/*.o 
+		$(RM) $(OBJS) $(BNS_OBJS) $(PRNTF)/*.o 
 
 fclean: clean
-		$(RM) client server $(LBFT_PRNTF) bonus_server bonus_client
+		$(RM) client server $(LBFT_PRNTF) server_bonus client_bonus
 
 re:	fclean all
