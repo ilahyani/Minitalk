@@ -44,13 +44,13 @@ $(C_NAME):	$(OBJS_clt) $(LBFT_PRNTF)
 
 all:	$(S_NAME) $(C_NAME)
 
-$(S_bonus):	$(BNS_OBJS_srv) $(LBFT_PRNTF)
+$(BNS_S_NAME):	$(BNS_OBJS_srv) $(LBFT_PRNTF)
 			$(CC) $(CFLAGS) $(BNS_OBJS_srv) $(LBFT_PRNTF) -o $(BNS_S_NAME)
 
-$(C_bonus):	$(BNS_OBJS_clt) $(LBFT_PRNTF)
+$(BNS_C_NAME):	$(BNS_OBJS_clt) $(LBFT_PRNTF)
 			$(CC) $(CFLAGS) $(BNS_OBJS_clt) $(LBFT_PRNTF) -o $(BNS_C_NAME)
 
-bonus:	$(S_bonus) $(C_bonus)
+bonus:	$(BNS_S_NAME) $(BNS_C_NAME)
 
 $(LBFT_PRNTF):
 				make -C $(PRNTF)
