@@ -42,13 +42,13 @@ $(S_NAME):	$(OBJS_srv) $(LBFT_PRNTF)
 $(C_NAME):	$(OBJS_clt) $(LBFT_PRNTF)
 			$(CC) $(CFLAGS) $(OBJS_clt) $(LBFT_PRNTF) -o $(C_NAME)
 
+all:	$(S_NAME) $(C_NAME)
+
 $(S_bonus):	$(BNS_OBJS_srv) $(LBFT_PRNTF)
 			$(CC) $(CFLAGS) $(BNS_OBJS_srv) $(LBFT_PRNTF) -o $(BNS_S_NAME)
 
 $(C_bonus):	$(BNS_OBJS_clt) $(LBFT_PRNTF)
 			$(CC) $(CFLAGS) $(BNS_OBJS_clt) $(LBFT_PRNTF) -o $(BNS_C_NAME)
-
-all:	$(S_NAME) $(C_NAME)
 
 bonus:	$(S_bonus) $(C_bonus)
 
