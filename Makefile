@@ -18,14 +18,6 @@ BNS_OBJS_srv = $(BNS_svr:.c=.o)
 
 BNS_OBJS_clt = $(BNS_clt:.c=.o)
 
-S_NAME = server
-
-C_NAME = client
-
-BNS_S_NAME = bonus_server
-
-BNS_C_NAME = bonus_client
-
 CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror
@@ -34,23 +26,15 @@ RM = rm -rf
 
 PRNTF = ./ft_printf
 
-LBFT_PRNTF = ./ft_printf/libftprintf.a
+LBFT_PRNTF = ./ft_printf/libftprintf.a	
 
-all:	$(C_NAME) $(S_NAME)
+all:	$(OBJS_clt) $(OBJS_srv) $(LBFT_PRNTF)
+			$(CC) $(CFLAGS) $(OBJS_clt) $(LBFT_PRNTF) -o client
+			$(CC) $(CFLAGS) $(OBJS_srv) $(LBFT_PRNTF) -o server
 
-$(C_NAME):	$(OBJS_clt) $(LBFT_PRNTF)
-		$(CC) $(CFLAGS) $(OBJS_clt) $(LBFT_PRNTF) -o $(C_NAME)
-
-$(S_NAME):	$(OBJS_srv) $(LBFT_PRNTF)
-		$(CC) $(CFLAGS) $(OBJS_srv) $(LBFT_PRNTF) -o $(S_NAME)
-
-$(BNS_S_NAME):	$(BNS_OBJS_srv) $(LBFT_PRNTF)
-			$(CC) $(CFLAGS) $(BNS_OBJS_srv) $(LBFT_PRNTF) -o $(BNS_S_NAME)
-
-$(BNS_C_NAME):	$(BNS_OBJS_clt) $(LBFT_PRNTF)
-			$(CC) $(CFLAGS) $(BNS_OBJS_clt) $(LBFT_PRNTF) -o $(BNS_C_NAME)
-
-bonus:	$(BNS_S_NAME) $(BNS_C_NAME)
+bonus:	$(BNS_OBJS_srv) $(BNS_OBJS_clt) $(LBFT_PRNTF)
+			$(CC) $(CFLAGS) $(BNS_OBJS_srv) $(LBFT_PRNTF) -o bonus_server
+			$(CC) $(CFLAGS) $(BNS_OBJS_clt) $(LBFT_PRNTF) -o bonus_client
 
 $(LBFT_PRNTF):
 				Make -C $(PRNTF)
@@ -59,6 +43,6 @@ clean:
 		$(RM) $(OBJS_srv) $(OBJS_clt) $(BNS_OBJS_srv) $(BNS_OBJS_clt) $(PRNTF)/*.o 
 
 fclean: clean
-		$(RM) $(S_NAME) $(C_NAME) $(LBFT_PRNTF) $(S_bonus) $(C_bonus) $(BNS_S_NAME) $(BNS_C_NAME)
+		$(RM) client server $(LBFT_PRNTF) bonus_server bonus_client
 
 re:	fclean all

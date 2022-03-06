@@ -6,7 +6,7 @@
 /*   By: ilahyani <ilahyani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 13:16:52 by ilahyani          #+#    #+#             */
-/*   Updated: 2022/03/06 15:48:51 by ilahyani         ###   ########.fr       */
+/*   Updated: 2022/03/06 16:00:34 by ilahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <signal.h>
 # include <unistd.h>
-# include "ft_printf/ft_printf.h"
+# include "../ft_printf/ft_printf.h"
 
 int		ft_power(int nb, int power);
 size_t	ft_strlen(char *s);

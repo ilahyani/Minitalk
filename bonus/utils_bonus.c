@@ -6,11 +6,11 @@
 /*   By: ilahyani <ilahyani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 15:48:07 by ilahyani          #+#    #+#             */
-/*   Updated: 2022/03/06 15:48:09 by ilahyani         ###   ########.fr       */
+/*   Updated: 2022/03/06 16:00:57 by ilahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "minitalk_bonus.h"
 
 int	ft_power(int nb, int power)
 {
