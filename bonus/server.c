@@ -10,7 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include <signal.h>
+#include <stdio.h>
+#include <string.h>
+#include <unistd.h>
+#include <math.h>
 
 int j = 7;
 
@@ -28,13 +32,13 @@ void	handler(int signum, siginfo_t *info, void *context)
 		j = 7;
 	}
 	if (signum == SIGUSR2)
-		byte += ft_power(2, j);
+		byte += pow(2, j); //ft_pow
 	if (--j == -1)
 	{
 		if (byte == 0)
 			kill(info->si_pid, SIGUSR1);
 		else
-			ft_printf("%d", byte);
+			write(1, &byte, 1);
 		og_pid = 0;
 		byte = 0;
 		j = 7;
@@ -47,7 +51,7 @@ int main()
 
 	sa.sa_sigaction = &handler;
 	sa.sa_flags = SA_SIGINFO;
-	ft_printf("%d\n", getpid());
+	printf("%d\n", getpid()); //ft_printf
 	sigaction(SIGUSR1, &sa, NULL);
 	sigaction(SIGUSR2, &sa, NULL);
 	while (1)

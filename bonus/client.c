@@ -10,11 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include <signal.h>
+#include <string.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <unistd.h>
 
 void	handler(int signum)
 {
-	ft_printf("Your Message Has Been Received Successfully\n");
+	printf("Your Message Has Been Received Successfully\n");
 }
 
 int main(int ac, char **av)
@@ -24,7 +28,7 @@ int main(int ac, char **av)
 	int	z;
 	size_t size;
 
-	if (ac != 3 || ft_atoi(av[1]) <= 1)
+	if (ac != 3 || atoi(av[1]) <= 1)
 		return (0);
 	signal(SIGUSR1, handler);
 	j = 0;
@@ -36,9 +40,9 @@ int main(int ac, char **av)
 		while (i < 9)
 		{
 			if ((z & av[2][j]) == 0)
-				kill(ft_atoi(av[1]), SIGUSR1);
+				kill(atoi(av[1]), SIGUSR1); //error if pid is got other chars than digits 
 			else if ((z & av[2][j]) == z)
-				kill(ft_atoi(av[1]), SIGUSR2);
+				kill(atoi(av[1]), SIGUSR2); // ft_atoi
 			z = z >> 1;
 			i++;
 			usleep(500);
