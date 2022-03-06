@@ -19,6 +19,7 @@ void	handler(int signum, siginfo_t *info, void *context)
 	static int	byte = 0;
 	static int og_pid;
 
+	(void) context;
 	if (!og_pid)
 		og_pid = info->si_pid;
 	if (og_pid != info->si_pid && j != 7)
