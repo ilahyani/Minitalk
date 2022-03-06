@@ -12,23 +12,17 @@
 
 #include "minitalk.h"
 
-void	handler(int signum)
-{
-	ft_printf("Your Message Has Been Received Successfully\n");
-}
-
 int main(int ac, char **av)
 {
-	int	i;
-	int	j;
-	int	z;
-	size_t size;
+	int		i;
+	int		z;
+	size_t	j;
+	size_t	size;
 
 	if (ac != 3 || ft_atoi(av[1]) <= 1)
 		return (0);
-	signal(SIGUSR1, handler);
 	j = 0;
-	size = strlen (av[2]);
+	size = ft_strlen(av[2]);
 	while (j <= size)
 	{
 		z = 128;

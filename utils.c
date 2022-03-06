@@ -12,6 +12,16 @@ int	ft_power(int nb, int power)
 		return (nb * ft_power(nb, power - 1));
 }
 
+size_t ft_strlen(char *s)
+{
+    size_t  i;
+
+    i = 0;
+    while (s[i])
+        i++;
+    return(i);
+}
+
 int	ft_is_numeric(const char *str)
 {
 	int	i;

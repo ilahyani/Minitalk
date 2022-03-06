@@ -32,10 +32,7 @@ void	handler(int signum, siginfo_t *info, void *context)
 		byte += ft_power(2, j);
 	if (--j == -1)
 	{
-		if (byte == 0)
-			kill(info->si_pid, SIGUSR1);
-		else
-			ft_printf("%d", byte);
+		ft_printf("%d", byte);
 		og_pid = 0;
 		byte = 0;
 		j = 7;
