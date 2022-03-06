@@ -59,6 +59,6 @@ clean:
 		$(RM) $(OBJS_srv) $(OBJS_clt) $(BNS_OBJS_srv) $(BNS_OBJS_clt) $(PRNTF)/*.o 
 
 fclean: clean
-		$(RM) $(S_NAME) $(C_NAME) $(LBFT_PRNTF) $(S_bonus) $(C_bonus)
+		$(RM) $(S_NAME) $(C_NAME) $(LBFT_PRNTF) $(S_bonus) $(C_bonus) $(BNS_S_NAME) $(BNS_C_NAME)
 
 re:	fclean all
